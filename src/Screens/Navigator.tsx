@@ -1,7 +1,7 @@
 import {
   createSwitchNavigator,
   createAppContainer,
-  createSta
+  createStackNavigator,
 } from 'react-navigation';
 
 import CheckLogin from '~/Screens/CheckLogin';
@@ -11,7 +11,7 @@ import MovieDetail from '~/Screens/MovieDetail';
 
 const LoginNavigator = createSwitchNavigator({Login});
 
-const MovieNavigator = createSwitchNavigator({
+const MovieNavigator = createStackNavigator({
   MovieHome,
   MovieDetail,
 });
