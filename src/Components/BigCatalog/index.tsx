@@ -1,11 +1,25 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 import Styled from 'styled-components/native';
-import BigCatalog from '~/Components/BigCatalog';
 
-const Container = Styled.View`
-  height: 300px;
-  margin-bottom: 8px;
+const Container = Styled.TouchableOpacity``;
+const CatalogImage = Styled.View``;
+const InfpContainer = Styled.View`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  align-itmes: flex-start;
+`;
+const LabelYear = Styled.Text`
+  background-color: #E70915;
+  color: #FFFFFF;
+  padding: 4px 8px;
+  margin-left: 4ps;
+  margin-bottom: 4px;
+  font-weight: bold;
+  border-radius: 4px;
+`;
+const SubInfoContainer = Styled.View`
 `;
 
 interface Props {
@@ -39,7 +53,6 @@ const BigCatalogList = ({url, onPress}: Props) => {
         renderItem={({item, index}) =>(
           <BigCatalog
             id={(item as IMovie).id}
-            
           />
         )}
       />
