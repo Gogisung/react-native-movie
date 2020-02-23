@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {FlatList} from 'react-native';
+import React from 'react';
+import {Dimensions} from 'react-native';
 import Styled from 'styled-components/native';
 
 const Container = Styled.TouchableOpacity``;
 const CatalogImage = Styled.View``;
-const InfpContainer = Styled.View`
+const InfoContainer = Styled.View`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -21,43 +21,59 @@ const LabelYear = Styled.Text`
 `;
 const SubInfoContainer = Styled.View`
 `;
+const Background = Styled.View`
+  position:absolute;
+  width: 100%;
+  height:100%;
+  top: 0;
+  left: 0;
+  background-color: #141414;
+  opacity: 0.9;
+`;
+const LabelTitle = Styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  padding: 8px 16px 4px 16px;
+`;
+const LabelGenres = Styled.Text`
+  font-size: 12px;
+  color: #FFFFFF;
+  padding: 4px 16px 8px 16px;
+`;
 
 interface Props {
-  url: string;
-  onPress: (id: number) => void;
+  id: number;
+  image: string;
+  year: number;
+  title: string;
+  genres: Array<string>;
+  onPress?: (id: number) => void;
 }
 
-const BigCatalogList = ({url, onPress}: Props) => {
-  const [data, setData] = useState<Array<IMovie>>([]);
-  useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(json => {
-        console.log(json);
-        setData(json.data.movies);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
-
+const BigCatalog = ({id, image, year, title, genres, onPress}: Props) => {
   return (
-    <Container>
-      <FlatList
-        horizontal={true}
-        pagingEnabled={true}
-        data={data}
-        keyExtractor={(item, index) => {
-          return `bigScreen-${index}`;
-        }}
-        renderItem={({item, index}) =>(
-          <BigCatalog
-            id={(item as IMovie).id}
-          />
-        )}
+    <Container
+      activeOpacity={1}
+      onPress={() => {
+        if (onPress && typeof onPress === 'function') {
+          onPress(id);
+        }
+      }}>
+      <CatalogImage
+        source={{url: image}}
+        style={{width: Dimensions.get('window').width, height: 300}}
       />
+      <InfoContainer>
+        <LabelYear>{year}년 개봉</LabelYear>
+        <SubInfoContainer>
+          <Background />
+          <LabelTitle>{title}</LabelTitle>
+          <LabelGenres>{genres.join(', ')}</LabelGenres>
+        </SubInfoContainer>
+      </InfoContainer>
     </Container>
   )
 };
 
-export default BigCatalogList;
+export default BigCatalog;
