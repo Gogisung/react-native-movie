@@ -13,8 +13,7 @@ const Container = Styled.ScrollView`
 const StyleButton = Styled.TouchableOpacity`
   padding: 8px;
 `;
-const Icon = Styled.Image`
-`;
+const Icon = Styled.Image``;
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState>;

@@ -22,8 +22,7 @@ const CatalogContainer = Styled.View`
 const CatalogImageContainer = Styled.TouchableOpacity`
   padding: 0px 4px;
 `;
-const CatalogImage = Styled.Image`
-`;
+const CatalogImage = Styled.Image``;
 
 interface Props {
   title: string;

@@ -3,18 +3,18 @@ import {Dimensions} from 'react-native';
 import Styled from 'styled-components/native';
 
 const Container = Styled.TouchableOpacity``;
-const CatalogImage = Styled.View``;
+const CatalogImage = Styled.Image``;
 const InfoContainer = Styled.View`
   position: absolute;
   bottom: 0;
   width: 100%;
-  align-itmes: flex-start;
+  align-items: flex-start;
 `;
 const LabelYear = Styled.Text`
   background-color: #E70915;
   color: #FFFFFF;
   padding: 4px 8px;
-  margin-left: 4ps;
+  margin-left: 4px;
   margin-bottom: 4px;
   font-weight: bold;
   border-radius: 4px;
@@ -22,9 +22,9 @@ const LabelYear = Styled.Text`
 const SubInfoContainer = Styled.View`
 `;
 const Background = Styled.View`
-  position:absolute;
+  position: absolute;
   width: 100%;
-  height:100%;
+  height: 100%;
   top: 0;
   left: 0;
   background-color: #141414;
@@ -61,8 +61,8 @@ const BigCatalog = ({id, image, year, title, genres, onPress}: Props) => {
         }
       }}>
       <CatalogImage
-        source={{url: image}}
-        style={{width: Dimensions.get('window').width, height: 300}}
+        source={{uri: image}}
+        style={{ width: Dimensions.get('window').width, height: 300 }}
       />
       <InfoContainer>
         <LabelYear>{year}년 개봉</LabelYear>
@@ -73,7 +73,7 @@ const BigCatalog = ({id, image, year, title, genres, onPress}: Props) => {
         </SubInfoContainer>
       </InfoContainer>
     </Container>
-  )
+  );
 };
 
 export default BigCatalog;
