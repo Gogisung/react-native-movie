@@ -18,6 +18,7 @@ interface IMovieDetail {
   large_screenshot_image2: string;
   large_screenshot_image3: string;
   like_count: number;
+  rating: number;
   runtime: number;
   year: number;
 }

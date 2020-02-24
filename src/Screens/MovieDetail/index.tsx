@@ -48,7 +48,7 @@ const MovieDetail = ({navigation}: Props) => {
   useEffect(() => {
     const id = navigation.getParam('id');
     fetch(
-      `https://yts.lt/api/v2/movie_details.json?movie_id=${id}&with_images=true&with_cast=true`
+      `https://yts.lt/api/v2/movie_details.json?movie_id=${id}&with_images=true&with_cast=true`,
     )
       .then(response => response.json())
       .then(json => {
